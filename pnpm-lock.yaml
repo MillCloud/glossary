@@ -39,10 +39,10 @@ specifiers:
   stylelint: ~14.0.1
   typescript: ~4.4.4
   vite: ~2.6.13
-  vite-plugin-pages: ~0.18.1
+  vite-plugin-pages: ~0.18.2
   vite-plugin-windicss: ~1.4.12
   vite-tsconfig-paths: ~3.3.17
-  windicss: ~3.1.9
+  windicss: ~3.2.0
 
 dependencies:
   '@ant-design/colors': 6.0.0
@@ -53,7 +53,7 @@ dependencies:
   react-router: 5.2.1_react@17.0.2
   react-router-config: 5.1.1_react-router@5.2.1+react@17.0.2
   react-router-dom: 5.3.0_react@17.0.2
-  windicss: 3.1.9
+  windicss: 3.2.0
 
 devDependencies:
   '@babel/core': 7.15.8
@@ -86,7 +86,7 @@ devDependencies:
   stylelint: 14.0.1
   typescript: 4.4.4
   vite: 2.6.13_less@4.1.2
-  vite-plugin-pages: 0.18.1_8d243728697ba143b290806bcef1890d
+  vite-plugin-pages: 0.18.2_8d243728697ba143b290806bcef1890d
   vite-plugin-windicss: 1.4.12_vite@2.6.13
   vite-tsconfig-paths: 3.3.17_vite@2.6.13
 
@@ -1243,7 +1243,7 @@ packages:
     dependencies:
       debug: 4.3.2
       jiti: 1.12.9
-      windicss: 3.1.9
+      windicss: 3.2.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1279,7 +1279,7 @@ packages:
       fast-glob: 3.2.7
       magic-string: 0.25.7
       micromatch: 4.0.4
-      windicss: 3.1.9
+      windicss: 3.2.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6654,8 +6654,8 @@ packages:
     resolution: {integrity: sha512-NOJ6JZCAWr0zlxZt+xqCHNTEKOsrks2HQd4MqhP1qy4z1SkbEP467eNx6TgDKXMvUOb+OENfJCZwM+16n7fRfw==}
     dev: false
 
-  /vite-plugin-pages/0.18.1_8d243728697ba143b290806bcef1890d:
-    resolution: {integrity: sha512-+hNe98nkKoN/jK5dEdsTWRpTEpF++5A523cdNXE329eLedp9nql1EmWAuR5UqvP8aU+LCtWJN6Nnw3NWGWB9gQ==}
+  /vite-plugin-pages/0.18.2_8d243728697ba143b290806bcef1890d:
+    resolution: {integrity: sha512-Z6ylvMKYSiCngtSpWw9pHN4UzjMQvOG7f0RtLMDKm1LrO5iye7V8BS8Rfdvrl9Nz+D2W+i0pi98+vOL5VsmTvQ==}
     peerDependencies:
       '@vue/compiler-sfc': '>=3'
       vite: '>=2'
@@ -6684,7 +6684,7 @@ packages:
       chalk: 4.1.2
       debug: 4.3.2
       vite: 2.6.13_less@4.1.2
-      windicss: 3.1.9
+      windicss: 3.2.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6855,8 +6855,8 @@ packages:
       string-width: 4.2.3
     dev: true
 
-  /windicss/3.1.9:
-    resolution: {integrity: sha512-5YoKvXeCQXIdwc91BoOgpKbIImr2JS8I14rPMa/5dKDDPA4ot3NgICWKELkml39R/8rn4Q0BVUUTqN+w+hjDSA==}
+  /windicss/3.2.0:
+    resolution: {integrity: sha512-z0q789VZXKdRBrAsfkR+1vOYCb7bS1kec1hyaulT4NClNgO9zGObWbiN+9Jwk0Iw7CLdk/QCB/WCF+zVmr0WpQ==}
     engines: {node: '>= 12'}
     hasBin: true
 
