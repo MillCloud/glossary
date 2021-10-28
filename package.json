@@ -1,0 +1,70 @@
+{
+  "name": "glossary",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "tsc && vite build --base=/glossary/",
+    "clean": "rimraf ./node_modules/.vite",
+    "commit": "cz",
+    "dev": "vite",
+    "postinstall": "pnpm run clean",
+    "lint": "pnpm run lint:eslint && pnpm run lint:markdownlint && pnpm run lint:stylelint",
+    "lint:eslint": "eslint . --fix --ext=.js,.jsx,.ts,.tsx,.vue --ignore-path=.gitignore",
+    "lint:markdownlint": "markdownlint . --fix --ignore-path=.gitignore",
+    "lint:stylelint": "stylelint \"./**/*.{css,less,scss,vue}\" --fix --allow-empty-input --ignore-path=.gitignore",
+    "prepare": "is-ci || husky install",
+    "release": "release-it",
+    "serve": "vite preview"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@ant-design/colors": "~6.0.0",
+    "@iconify/react": "~3.0.1",
+    "antd": "~4.16.13",
+    "react": "~17.0.2",
+    "react-dom": "~17.0.2",
+    "react-router": "~5.2.1",
+    "react-router-config": "~5.1.1",
+    "react-router-dom": "~5.3.0",
+    "windicss": "~3.1.9"
+  },
+  "devDependencies": {
+    "@babel/core": "~7.15.8",
+    "@babel/eslint-parser": "~7.15.8",
+    "@commitlint/cli": "~13.2.1",
+    "@modyqyw/fabric": "~4.0.0-10",
+    "@types/node": "~16.11.6",
+    "@types/react": "~17.0.33",
+    "@types/react-dom": "~17.0.10",
+    "@types/react-router-config": "~5.0.3",
+    "@types/react-router-dom": "~5.3.2",
+    "@typescript-eslint/eslint-plugin": "~5.2.0",
+    "@typescript-eslint/parser": "~5.2.0",
+    "@vitejs/plugin-react": "~1.0.6",
+    "@vitejs/plugin-vue": "~1.9.4",
+    "@vue/compiler-sfc": "~3.2.20",
+    "@windicss/plugin-animations": "~1.0.9",
+    "@windicss/plugin-heropatterns": "~0.0.8",
+    "@windicss/plugin-interaction-variants": "~1.0.0",
+    "@windicss/plugin-question-mark": "~0.1.1",
+    "@windicss/plugin-scrollbar": "~1.2.3",
+    "eslint": "~7.32.0",
+    "husky": "~7.0.4",
+    "is-ci": "~3.0.1",
+    "less": "~4.1.2",
+    "lint-staged": "~11.2.6",
+    "markdownlint-cli": "~0.29.0",
+    "prettier": "~2.2.1",
+    "release-it": "~14.11.6",
+    "stylelint": "~14.0.1",
+    "typescript": "~4.4.4",
+    "vite": "~2.6.13",
+    "vite-plugin-pages": "~0.18.1",
+    "vite-plugin-windicss": "~1.4.12",
+    "vite-tsconfig-paths": "~3.3.17"
+  }
+}
