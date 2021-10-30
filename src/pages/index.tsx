@@ -72,7 +72,7 @@ const Index = memo(() => {
     (name: string) => {
       const { href } = location;
       if (href?.includes('gitee')) {
-        return `https://gitee.com/millcloud/glossary-json/raw/main/${name}.json`;
+        return `https://gitee.com/MillCloud/glossary-json/raw/main/${name}.json`;
       }
       return `https://raw.githubusercontent.com/MillCloud/glossary-json/main/${name}.json`;
     },
@@ -83,9 +83,9 @@ const Index = memo(() => {
     if (href?.includes('gitee')) {
       return {
         'Content-Type': 'application/json;charset=UTF-8',
+        Accept: 'application/json',
       };
     }
-    // eslint-disable-next-line consistent-return
     return {
       'Content-Type': 'application/json;charset=UTF-8',
       Accept: 'application/vnd.github.v3+json',
