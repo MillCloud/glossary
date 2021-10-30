@@ -1,6 +1,6 @@
 import { memo, useState, useMemo, useCallback } from 'react';
 import { Row, Col, Input, Typography, Divider, List, Card, Spin, Result } from 'antd';
-import { useQuery, useQueries } from 'react-query';
+import { useQueries } from 'react-query';
 import { useLocation } from 'react-use';
 
 const { Link } = Typography;
