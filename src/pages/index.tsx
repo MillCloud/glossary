@@ -78,19 +78,24 @@ const Index = memo(() => {
     },
     [location],
   );
-  const headers = useMemo(() => {
+  const headers: Record<string, any> = useMemo(() => {
     const { href } = location;
     if (href?.includes('gitee')) {
-      return;
+      return {
+        'Content-Type': 'application/json;charset=UTF-8',
+      };
     }
     // eslint-disable-next-line consistent-return
-    return { Accept: 'application/vnd.github.v3+json' };
+    return {
+      'Content-Type': 'application/json;charset=UTF-8',
+      Accept: 'application/vnd.github.v3+json',
+    };
   }, [location]);
   const results = useQueries(
     alphabet.map((item) => ({
       queryKey: ['json', item],
       queryFn: () =>
-        fetch(url(item), { headers, mode: 'no-cors' }).then((response) => response.json()),
+        fetch(url(item), { headers, mode: 'cors' }).then((response) => response.json()),
     })),
   );
   const isLoading = useMemo(() => results.some((item) => item.isLoading), [results]);
