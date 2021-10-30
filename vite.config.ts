@@ -20,9 +20,11 @@ export default defineConfig({
       'antd',
       'react',
       'react-dom',
+      'react-query',
       'react-router',
       'react-router-config',
       'react-router-dom',
+      'react-use',
     ],
   },
   plugins: [
