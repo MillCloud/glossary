@@ -90,7 +90,7 @@ const Index = memo(() => {
     alphabet.map((item) => ({
       queryKey: ['json', item],
       queryFn: () =>
-        fetch(url(item), { headers, mode: 'cors' }).then((response) => response.json()),
+        fetch(url(item), { headers, mode: 'no-cors' }).then((response) => response.json()),
     })),
   );
   const isLoading = useMemo(() => results.some((item) => item.isLoading), [results]);
