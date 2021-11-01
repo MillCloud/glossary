@@ -18,6 +18,7 @@ export default defineConfig({
     include: [
       '@iconify/react',
       'antd',
+      'js-base64',
       'react',
       'react-dom',
       'react-query',
