@@ -94,9 +94,13 @@ const Index = memo(() => {
     alphabet.map((item) => ({
       queryKey: ['json', item],
       queryFn: () =>
-        fetch(url(item), { headers })
-          .then((response) => response.json())
-          .then((response) => JSON.parse(decode(response.content))),
+        fetch(url(item), { headers }).then(async (response) => {
+          const json = await response.json();
+          if (!response.ok) {
+            throw new Error(`${json.message} Documentation URL: ${json.documentation_url}.`);
+          }
+          return JSON.parse(decode(json.content));
+        }),
     })),
   );
   const isLoading = useMemo(() => results.some((item) => item.isLoading), [results]);
