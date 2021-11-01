@@ -1,7 +1,8 @@
 import { memo, useState, useMemo, useCallback } from 'react';
-import { Row, Col, Input, Typography, Divider, List, Card, Spin, Result } from 'antd';
+import { Row, Col, Input, Typography, Divider, List, Card, Spin, Result, Space } from 'antd';
 import { useQueries } from 'react-query';
 import { useLocation } from 'react-use';
+import { decode } from 'js-base64';
 
 const { Link } = Typography;
 
@@ -72,9 +73,9 @@ const Index = memo(() => {
     (name: string) => {
       const { href } = location;
       if (href?.includes('gitee')) {
-        return `https://gitee.com/MillCloud/glossary-json/raw/main/${name}.json`;
+        return `https://gitee.com/api/v5/repos/MillCloud/glossary-json/contents/${name}.json`;
       }
-      return `https://raw.githubusercontent.com/MillCloud/glossary-json/main/${name}.json`;
+      return `https://api.github.com/repos/MillCloud/glossary-json/contents/${name}.json`;
     },
     [location],
   );
@@ -82,12 +83,10 @@ const Index = memo(() => {
     const { href } = location;
     if (href?.includes('gitee')) {
       return {
-        'Content-Type': 'application/json;charset=UTF-8',
         Accept: 'application/json',
       };
     }
     return {
-      'Content-Type': 'application/json;charset=UTF-8',
       Accept: 'application/vnd.github.v3+json',
     };
   }, [location]);
@@ -95,7 +94,9 @@ const Index = memo(() => {
     alphabet.map((item) => ({
       queryKey: ['json', item],
       queryFn: () =>
-        fetch(url(item), { headers, mode: 'cors' }).then((response) => response.json()),
+        fetch(url(item), { headers })
+          .then((response) => response.json())
+          .then((response) => JSON.parse(decode(response.content))),
     })),
   );
   const isLoading = useMemo(() => results.some((item) => item.isLoading), [results]);
@@ -128,10 +129,18 @@ const Index = memo(() => {
         </Col>
       </Row>
       <Row justify="center" className="my-4">
-        找不到想要的？
-        <Link href="https://unbug.github.io/codelf/" target="_blank">
-          试试别的
-        </Link>
+        找不到想要的？看看别的：
+        <Space size="large">
+          <Link href="https://github.com/kettanaito/naming-cheatsheet" target="_blank">
+            naming-cheatsheet
+          </Link>
+          <Link href="https://unbug.github.io/codelf/" target="_blank">
+            codelf
+          </Link>
+          <Link href="https://fe.js.org/#/doc/naming" target="_blank">
+            命名宝典
+          </Link>
+        </Space>
       </Row>
       {isLoading && (
         <Row justify="center" className="my-4">
