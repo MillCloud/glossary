@@ -14,6 +14,12 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
+      retry: (failureCount, error) => {
+        if ((error as Error)?.message.includes('rate limit exceeded')) {
+          return false;
+        }
+        return failureCount < 3;
+      },
     },
   },
 });
