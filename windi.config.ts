@@ -124,7 +124,6 @@ export default defineConfig({
             {},
           ),
         },
-        lightBlue: windiColors.lightBlue,
         blue: {
           ...(windiColors.blue as Record<string | number, string>),
           ...antdBlue.reduce(
