@@ -138,6 +138,9 @@ const Index = memo(() => {
           <Link href="https://github.com/kettanaito/naming-cheatsheet" target="_blank">
             naming-cheatsheet
           </Link>
+          <Link href="https://dictionary.cambridge.org/" target="_blank">
+            剑桥词典
+          </Link>
           <Link href="https://unbug.github.io/codelf/" target="_blank">
             codelf
           </Link>
