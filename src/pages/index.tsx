@@ -63,7 +63,7 @@ const alphabet = [
   'Z',
 ];
 
-type JSONData = [Alphabet, { [propName: string]: string[] }][];
+type JSONData = [Alphabet, [string, string[]][]][];
 
 const Index = memo(() => {
   const [searchText, setSearchText] = useState('');
@@ -107,13 +107,26 @@ const Index = memo(() => {
   const error = useMemo(() => results.find((item) => item.error)?.error, [results]);
   const data = useMemo(
     () =>
-      (results.map((item, index) => [alphabet[index], item.data]) as JSONData).filter(
-        ([, object = {}]) =>
-          Object.keys(object).length > 0 &&
-          Object.entries(object).some(
-            ([k, v]) => k.includes(searchText) || v.some((item) => item.includes(searchText)),
-          ),
-      ),
+      (results.map((result, index) => [
+        alphabet[index],
+        Object.entries(result.data ?? {}),
+      ]) as JSONData)
+        .filter(
+          ([char, entries]) =>
+            char.includes(searchText) ||
+            entries.some(
+              ([k, v]) => k.includes(searchText) || v.some((item) => item.includes(searchText)),
+            ),
+        )
+        .map(([char, entries]) => [
+          char,
+          entries
+            .map(([k, v]) => [
+              k,
+              v.filter((item) => k.includes(searchText) || item.includes(searchText)),
+            ])
+            .filter(([, v]) => v.length > 0),
+        ]) as JSONData,
     [results, searchText],
   );
 
@@ -160,7 +173,7 @@ const Index = memo(() => {
       )}
       {!isLoading &&
         !error &&
-        data.map(([char, object]) => (
+        data.map(([char, entries]) => (
           <>
             <Divider orientation="left">{char}</Divider>
             <List
@@ -173,7 +186,7 @@ const Index = memo(() => {
                 xl: 4,
                 xxl: 4,
               }}
-              dataSource={Object.entries(object)}
+              dataSource={entries}
               rowKey={(item) => item[0]}
               renderItem={(item) => (
                 <List.Item key={item[0]}>
