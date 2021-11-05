@@ -1,5 +1,17 @@
 import { memo, useState, useMemo, useCallback } from 'react';
-import { Row, Col, Input, Typography, Divider, List, Card, Spin, Result, Space } from 'antd';
+import {
+  Row,
+  Col,
+  Input,
+  Typography,
+  Divider,
+  List,
+  Card,
+  Spin,
+  Result,
+  Space,
+  Select,
+} from 'antd';
 import { useQueries } from 'react-query';
 import { useLocation } from 'react-use';
 import { decode } from 'js-base64';
@@ -65,34 +77,37 @@ const alphabet = [
 
 type JSONData = [Alphabet, [string, string[]][]][];
 
+const GithubResourceUrl = 'https://api.github.com/repos/MillCloud/glossary-json/contents/';
+const GiteeResourceUrl = 'https://gitee.com/api/v5/repos/MillCloud/glossary-json/contents/';
+const resources = [
+  {
+    label: 'Github',
+    value: GithubResourceUrl,
+  },
+  {
+    label: 'Gitee',
+    value: GiteeResourceUrl,
+  },
+];
+
 const Index = memo(() => {
+  const location = useLocation();
+  const [resource, setResource] = useState(() =>
+    location.href?.includes('gitee') ? GiteeResourceUrl : GithubResourceUrl,
+  );
+
   const [searchText, setSearchText] = useState('');
 
-  const location = useLocation();
-  const url = useCallback(
-    (name: string) => {
-      const { href } = location;
-      if (href?.includes('gitee')) {
-        return `https://gitee.com/api/v5/repos/MillCloud/glossary-json/contents/${name}.json`;
-      }
-      return `https://api.github.com/repos/MillCloud/glossary-json/contents/${name}.json`;
-    },
-    [location],
+  const url = useCallback((name: string) => `${resource}${name}.json`, [resource]);
+  const headers: Record<string, any> = useMemo(
+    () => ({
+      Accept: resource.includes('gitee') ? 'application/json' : 'application/vnd.github.v3+json',
+    }),
+    [resource],
   );
-  const headers: Record<string, any> = useMemo(() => {
-    const { href } = location;
-    if (href?.includes('gitee')) {
-      return {
-        Accept: 'application/json',
-      };
-    }
-    return {
-      Accept: 'application/vnd.github.v3+json',
-    };
-  }, [location]);
   const results = useQueries(
     alphabet.map((item) => ({
-      queryKey: ['json', item],
+      queryKey: [resource, item],
       queryFn: () =>
         fetch(url(item), { headers }).then(async (response) => {
           const json = await response.json();
@@ -133,11 +148,20 @@ const Index = memo(() => {
   return (
     <>
       <Row justify="center">
-        <Col xs={24} md={12} lg={8}>
+        <Col xs={24} md={12} xl={8}>
           <Input.Search
+            addonBefore={
+              <Select
+                value={resource}
+                className="w-auto"
+                options={resources}
+                onChange={(value) => setResource(value)}
+              />
+            }
             placeholder="输入中文或英文查询"
             allowClear
             enterButton
+            loading={isLoading}
             defaultValue=""
             onSearch={(value) => {
               setSearchText(value);
