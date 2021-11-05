@@ -13,6 +13,7 @@ import 'virtual:windi.css';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      staleTime: Number.POSITIVE_INFINITY,
       refetchOnWindowFocus: false,
       retry: (failureCount, error) => {
         if ((error as Error)?.message.includes('rate limit exceeded')) {
