@@ -13,9 +13,12 @@ const Index = memo(() => (
     </Paragraph>
     <Paragraph>
       此外，某些专业术语难以理解或翻译，往往会使开发者困惑，比如 <Text code>vendor</Text> 和{' '}
-      <Text>chunk</Text>。
+      <Text code>chunk</Text>。
     </Paragraph>
-    <Paragraph>该项目旨在统一跨项目的日常中英文本对照，同时也提供部分专业术语对照。</Paragraph>
+    <Paragraph>
+      该项目旨在 <Text strong>统一</Text> 跨项目的日常中英文本对照，同时也提供{' '}
+      <Text strong>部分专业术语对照</Text>。
+    </Paragraph>
   </Typography>
 ));
 
