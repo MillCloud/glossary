@@ -34,6 +34,12 @@ const Layout = memo(({ children }) => (
           <Link href={`https://gitee.com/MillCloud/${pkg.name}`} target="_blank">
             Gitee Repo
           </Link>
+          <Link href={`https://github.com/MillCloud/${pkg.name}-json`} target="_blank">
+            Github Data Repo
+          </Link>
+          <Link href={`https://gitee.com/MillCloud/${pkg.name}-json`} target="_blank">
+            Gitee Data Repo
+          </Link>
           <Link href={`https://millcloud.github.io/${pkg.name}/`} target="_blank">
             Github Page
           </Link>
