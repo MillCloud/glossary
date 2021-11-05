@@ -11,6 +11,7 @@ import {
   Result,
   Space,
   Select,
+  Tooltip,
 } from 'antd';
 import { useQueries } from 'react-query';
 import { useLocation } from 'react-use';
@@ -204,17 +205,17 @@ const Index = memo(() => {
               grid={{
                 gutter: 16,
                 xs: 1,
-                sm: 2,
-                md: 3,
-                lg: 4,
-                xl: 4,
+                sm: 1,
+                md: 2,
+                lg: 3,
+                xl: 3,
                 xxl: 4,
               }}
               dataSource={entries}
               rowKey={(item) => item[0]}
               renderItem={(item) => (
                 <List.Item key={item[0]}>
-                  <Card title={item[0]}>
+                  <Card title={<Tooltip title={item[0]}>{item[0]}</Tooltip>}>
                     {item[1].map((string) => (
                       <Typography>{string}</Typography>
                     ))}
