@@ -15,39 +15,10 @@ import {
   magenta as antdMagenta,
   grey as antdGray,
 } from '@ant-design/colors';
-import aspectRatioPlugin from 'windicss/plugin/aspect-ratio';
-import formsPlugin from 'windicss/plugin/forms';
-import filtersPlugin from 'windicss/plugin/filters';
-import lineClampPlugin from 'windicss/plugin/line-clamp';
-import scrollSnapPlugin from 'windicss/plugin/scroll-snap';
-import typographyPlugin from 'windicss/plugin/typography';
-// @ts-ignore
-import animationsPlugin from '@windicss/plugin-animations';
-// @ts-ignore
-import scrollbarPlugin from '@windicss/plugin-scrollbar';
-// @ts-ignore
-import questionMarkPlugin from '@windicss/plugin-question-mark';
-// @ts-ignore
-import heropatternsPlugin from '@windicss/plugin-heropatterns';
-// @ts-ignore
-import interactionVariantsPlugin from '@windicss/plugin-interaction-variants';
 
 export default defineConfig({
   preflight: false,
   attributify: true,
-  plugins: [
-    aspectRatioPlugin,
-    formsPlugin,
-    filtersPlugin,
-    lineClampPlugin,
-    scrollSnapPlugin,
-    typographyPlugin,
-    animationsPlugin,
-    scrollbarPlugin,
-    questionMarkPlugin,
-    heropatternsPlugin,
-    interactionVariantsPlugin,
-  ],
   theme: {
     extend: {
       screens: {
