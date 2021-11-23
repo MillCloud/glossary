@@ -3,7 +3,7 @@
   "version": "0.6.0",
   "private": true,
   "scripts": {
-    "build": "tsc && vite build --base=/glossary/",
+    "build": "vite build --base=/glossary/",
     "clean": "rimraf ./node_modules/.vite",
     "commit": "cz",
     "dev": "vite",
