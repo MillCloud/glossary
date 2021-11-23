@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": ["DOM", "ESNext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -25,19 +25,13 @@
     }
   },
   "include": [
-    "./**/*.ts",
-    "./**/*.tsx",
+    "./**/.*.js",
     "./**/*.js",
     "./**/*.jsx",
-    "./**/*.vue",
-    "./**/.*.js"
+    "./**/.*.ts",
+    "./**/*.ts",
+    "./**/*.tsx",
+    "./**/*.vue"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "dist-ssr",
-    "dist_electron",
-    "out",
-    "unpackage"
-  ]
+  "exclude": ["node_modules", "dist", "dist-ssr", "dist_electron", "out", "unpackage"]
 }
