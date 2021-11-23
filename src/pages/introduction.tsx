@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { Typography } from 'antd';
 
-const { Title, Paragraph, Text } = Typography;
+const { Title, Paragraph, Text, Link } = Typography;
 
 const Index = memo(() => (
   <Typography>
@@ -18,6 +18,13 @@ const Index = memo(() => (
     <Paragraph>
       该项目旨在 <Text strong>统一</Text> 跨项目的日常中英文本对照，同时也提供{' '}
       <Text strong>部分专业术语对照</Text>。
+    </Paragraph>
+    <Paragraph>
+      该项目可以视为学习英语的捷径，但捷径往往意味着基础不牢固。在此推荐{' '}
+      <Link href="https://github.com/yujiangshui/A-Programmers-Guide-to-English" target="_blank">
+        程序员英语学习指南
+      </Link>
+      。
     </Paragraph>
   </Typography>
 ));
