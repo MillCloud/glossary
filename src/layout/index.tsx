@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
 import { Layout as ALayout, Typography, Image, Row, Menu, BackTop, Space } from 'antd';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import pkg from '@/../package.json';
 import logoUrl from '@/assets/logo.png';
 
@@ -20,7 +20,7 @@ const routes = [
 
 const Layout = memo(({ children }: { children: React.ReactNode }) => {
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
   const selectedKeys = useMemo(
     () => routes.filter((route) => route.path === location.pathname).map((route) => route.name),
     [location],
@@ -45,7 +45,7 @@ const Layout = memo(({ children }: { children: React.ReactNode }) => {
             mode="horizontal"
             selectedKeys={selectedKeys}
             onClick={({ key }) => {
-              history.push(`/${key}`);
+              navigate(`/${key}`);
             }}
           >
             <Menu.Item key="index">列表</Menu.Item>

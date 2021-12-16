@@ -123,10 +123,12 @@ const Index = memo(() => {
   const error = useMemo(() => results.find((item) => item.error)?.error, [results]);
   const data = useMemo(
     () =>
-      (results.map((result, index) => [
-        alphabet[index],
-        Object.entries(result.data ?? {}),
-      ]) as JSONData)
+      (
+        results.map((result, index) => [
+          alphabet[index],
+          Object.entries(result.data ?? {}),
+        ]) as JSONData
+      )
         .filter(
           ([char, entries]) =>
             char.includes(searchText) ||

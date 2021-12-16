@@ -1,4 +1,4 @@
 import { memo } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
-export default memo(() => <Redirect to="/" />);
+export default memo(() => <Navigate to="/" />);

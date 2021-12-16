@@ -4,9 +4,8 @@ import { ConfigProvider } from 'antd';
 import zhCN from 'antd/lib/locale/zh_CN';
 import 'antd/dist/antd.variable.min.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { HashRouter } from 'react-router-dom';
-import { renderRoutes } from 'react-router-config';
-import routes from 'virtual:generated-pages-react';
+import { HashRouter, useRoutes } from 'react-router-dom';
+import routes from '~react-pages';
 import Layout from '@/layout';
 import 'virtual:windi.css';
 
@@ -25,12 +24,18 @@ const queryClient = new QueryClient({
   },
 });
 
+function App() {
+  return useRoutes(routes);
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ConfigProvider locale={zhCN}>
         <HashRouter basename={import.meta.env.BASE_URL}>
-          <Layout>{renderRoutes(routes)}</Layout>
+          <Layout>
+            <App />
+          </Layout>
         </HashRouter>
       </ConfigProvider>
     </QueryClientProvider>
