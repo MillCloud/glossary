@@ -9,6 +9,8 @@ export default defineConfig({
   optimizeDeps: {
     include: [
       '@iconify/react',
+      '@modyqyw/utils',
+      'ahooks',
       'antd',
       'js-base64',
       'react',

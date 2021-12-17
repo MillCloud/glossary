@@ -41,6 +41,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdRed.primary ?? antdRed[5],
         },
         orange: {
           ...(windiColors.orange as Record<string | number, string>),
@@ -51,6 +52,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdOrange.primary ?? antdOrange[5],
         },
         yellow: {
           ...(windiColors.yellow as Record<string | number, string>),
@@ -61,6 +63,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdYellow.primary ?? antdYellow[5],
         },
         amber: windiColors.amber,
         lime: {
@@ -72,6 +75,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdLime.primary ?? antdLime[5],
         },
         green: {
           ...(windiColors.green as Record<string | number, string>),
@@ -82,6 +86,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdGreen.primary ?? antdGreen[5],
         },
         emerald: windiColors.emerald,
         teal: windiColors.teal,
@@ -94,6 +99,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdCyan.primary ?? antdCyan[5],
         },
         blue: {
           ...(windiColors.blue as Record<string | number, string>),
@@ -104,6 +110,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdBlue.primary ?? antdBlue[5],
         },
         indigo: windiColors.indigo,
         purple: {
@@ -115,6 +122,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdPurple.primary ?? antdPurple[5],
         },
         violet: windiColors.violet,
         fuchsia: windiColors.fuchsia,
@@ -127,6 +135,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdGray.primary ?? antdGray[6],
         },
         blueGray: windiColors.blueGray,
         coolGray: windiColors.coolGray,
@@ -145,6 +154,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdVolcano.primary ?? antdVolcano[5],
         },
         gold: {
           ...antdGold.reduce(
@@ -154,6 +164,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdGold.primary ?? antdGold[5],
         },
         geekBlue: {
           ...antdGeekBlue.reduce(
@@ -163,6 +174,7 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdGeekBlue.primary ?? antdGeekBlue[5],
         },
         magenta: {
           ...antdMagenta.reduce(
@@ -172,6 +184,67 @@ export default defineConfig({
             }),
             {},
           ),
+          default: antdMagenta.primary ?? antdMagenta[5],
+        },
+        primary: {
+          ...antdBlue.reduce(
+            (acc, cur, idx) => ({
+              ...acc,
+              [idx + 1]: cur,
+            }),
+            {},
+          ),
+          default: antdBlue.primary ?? antdBlue[5],
+        },
+        success: {
+          ...antdGreen.reduce(
+            (acc, cur, idx) => ({
+              ...acc,
+              [idx + 1]: cur,
+            }),
+            {},
+          ),
+          default: antdGreen.primary ?? antdGreen[5],
+        },
+        warning: {
+          ...antdGold.reduce(
+            (acc, cur, idx) => ({
+              ...acc,
+              [idx + 1]: cur,
+            }),
+            {},
+          ),
+          default: antdGold.primary ?? antdGold[5],
+        },
+        error: {
+          ...antdRed.reduce(
+            (acc, cur, idx) => ({
+              ...acc,
+              [idx + 1]: cur,
+            }),
+            {},
+          ),
+          default: antdRed.primary ?? antdRed[5],
+        },
+        danger: {
+          ...antdRed.reduce(
+            (acc, cur, idx) => ({
+              ...acc,
+              [idx + 1]: cur,
+            }),
+            {},
+          ),
+          default: antdRed.primary ?? antdRed[5],
+        },
+        info: {
+          ...antdBlue.reduce(
+            (acc, cur, idx) => ({
+              ...acc,
+              [idx + 1]: cur,
+            }),
+            {},
+          ),
+          default: antdBlue.primary ?? antdBlue[5],
         },
       },
     },
