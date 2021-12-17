@@ -1,4 +1,4 @@
-import { memo, useState, useMemo, useCallback } from 'react';
+import { memo, useState, useMemo, useCallback, useLayoutEffect } from 'react';
 import {
   Row,
   Col,
@@ -13,9 +13,11 @@ import {
   Select,
   Tooltip,
 } from 'antd';
+import { useScroll } from 'ahooks';
 import { useQueries } from 'react-query';
 import { useLocation } from 'react-use';
 import { decode } from 'js-base64';
+import { findLast } from '@modyqyw/utils';
 
 const { Link } = Typography;
 
@@ -148,6 +150,19 @@ const Index = memo(() => {
     [results, searchText],
   );
 
+  const scrollPosition = useScroll(document);
+  const [activeAlphabet, setActiveAlphabet] = useState('A');
+  useLayoutEffect(() => {
+    setActiveAlphabet(
+      findLast(
+        alphabet,
+        (item) =>
+          (document.querySelector<HTMLElement>(`.divider-${item}`)?.offsetTop ?? 0) <=
+          (scrollPosition?.top ?? 0),
+      ) ?? 'A',
+    );
+  }, [scrollPosition]);
+
   return (
     <>
       <Row justify="center">
@@ -198,35 +213,59 @@ const Index = memo(() => {
         // @ts-ignore
         <Result status="error" title={(error?.message ?? error?.toString() ?? error) as string} />
       )}
-      {!isLoading &&
-        !error &&
-        data.map(([char, entries]) => (
-          <>
-            <Divider orientation="left">{char}</Divider>
-            <List
-              grid={{
-                gutter: 16,
-                xs: 1,
-                sm: 1,
-                md: 2,
-                lg: 3,
-                xl: 3,
-                xxl: 4,
-              }}
-              dataSource={entries}
-              rowKey={(item) => item[0]}
-              renderItem={(item) => (
-                <List.Item key={item[0]}>
-                  <Card title={<Tooltip title={item[0]}>{item[0]}</Tooltip>}>
-                    {item[1].map((string) => (
-                      <Typography>{string}</Typography>
-                    ))}
-                  </Card>
-                </List.Item>
-              )}
-            />
-          </>
-        ))}
+      {!isLoading && !error && (
+        <Row>
+          <Col span={24}>
+            {data.map(([char, entries]) => (
+              <>
+                <Divider orientation="left" className={`divider-${char}`}>
+                  {char}
+                </Divider>
+                <List
+                  grid={{
+                    gutter: 16,
+                    xs: 1,
+                    sm: 1,
+                    md: 2,
+                    lg: 3,
+                    xl: 3,
+                    xxl: 4,
+                  }}
+                  dataSource={entries}
+                  rowKey={(item) => item[0]}
+                  renderItem={(item) => (
+                    <List.Item key={item[0]}>
+                      <Card title={<Tooltip title={item[0]}>{item[0]}</Tooltip>}>
+                        {item[1].map((string) => (
+                          <Typography>{string}</Typography>
+                        ))}
+                      </Card>
+                    </List.Item>
+                  )}
+                />
+              </>
+            ))}
+          </Col>
+          <Col span={1} className="flex flex-col items-center fixed right-0 top-64px">
+            {alphabet.map((item) => (
+              <Row
+                key={item}
+                role="button"
+                className={`cursor-pointer w-20px justify-center items-center ${
+                  activeAlphabet === item ? 'text-blue-6' : ''
+                }`}
+                onClick={() => {
+                  document
+                    .querySelector(`.divider-${item}`)
+                    ?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                {item}
+              </Row>
+            ))}
+          </Col>
+        </Row>
+      )}
     </>
   );
 });
