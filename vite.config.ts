@@ -1,25 +1,32 @@
 import { defineConfig } from 'vite';
-import React from '@vitejs/plugin-react';
-import TsconfigPaths from 'vite-tsconfig-paths';
-import WindiCSS from 'vite-plugin-windicss';
-import Pages from 'vite-plugin-pages';
+import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import pages from 'vite-plugin-pages';
+import env from 'vite-plugin-env-compatible';
+import compression from 'vite-plugin-compression';
+import eslint from 'vite-plugin-eslint';
+import stylelint from 'vite-plugin-stylelint';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  optimizeDeps: {
-    include: [
-      '@iconify/react',
-      '@modyqyw/utils',
-      'ahooks',
-      'antd',
-      'js-base64',
-      'react',
-      'react-dom',
-      'react-query',
-      'react-router',
-      'react-router-dom',
-      'react-use',
-    ],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    pages(),
+    compression(),
+    env({
+      prefix: 'VITE',
+    }),
+    eslint({
+      fix: true,
+    }),
+    stylelint({
+      fix: true,
+    }),
+  ],
+  server: {
+    fs: {
+      strict: true,
+    },
+    host: true,
   },
-  plugins: [React(), TsconfigPaths(), WindiCSS(), Pages()],
 });
