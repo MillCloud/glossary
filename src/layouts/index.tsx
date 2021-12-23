@@ -27,7 +27,7 @@ const Layout = memo(({ children }: { children: React.ReactNode }) => {
   );
   return (
     <ALayout className="min-h-screen">
-      <Header className="fixed z-1 w-full" style={{ padding: '0 24px' }}>
+      <Header className="fixed z-10 w-full" style={{ padding: '0 24px' }}>
         <Row align="middle" className="h-full flex-nowrap">
           <a
             href="https://www.millcloud.cn"
