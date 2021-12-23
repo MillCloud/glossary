@@ -5,9 +5,16 @@ import zhCN from 'antd/lib/locale/zh_CN';
 import 'antd/dist/antd.variable.min.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { HashRouter, useRoutes } from 'react-router-dom';
+import '@/styles/global.css';
+import browserUpdate from 'browser-update';
 import routes from '~react-pages';
-import Layout from '@/layout';
-import 'virtual:windi.css';
+import Layout from '@/layouts';
+
+browserUpdate({
+  required: { e: 79, f: 67, o: 50, s: 12, c: 63 },
+  insecure: true,
+  unsupported: true,
+});
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,7 +39,7 @@ ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ConfigProvider locale={zhCN}>
-        <HashRouter basename={import.meta.env.BASE_URL}>
+        <HashRouter>
           <Layout>
             <App />
           </Layout>
