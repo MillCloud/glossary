@@ -252,7 +252,7 @@ const Index = memo(() => {
                 key={item}
                 role="button"
                 className={`cursor-pointer w-20px justify-center items-center ${
-                  activeAlphabet === item ? 'text-primary' : ''
+                  activeAlphabet === item ? 'text-blue-600' : ''
                 }`}
                 onClick={() => {
                   document
