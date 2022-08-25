@@ -9,19 +9,13 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    VBackButton: typeof import('./src/components/VBackButton.vue')['default']
-    Verror: typeof import('./src/components/Verror.vue')['default']
     VError: typeof import('./src/components/VError.vue')['default']
     VForm: typeof import('./src/components/VForm.vue')['default']
     VHeader: typeof import('./src/components/VHeader.vue')['default']
-    VIcon: typeof import('@iconify/vue')['Icon']
     VList: typeof import('./src/components/VList.vue')['default']
     VListDivider: typeof import('./src/components/VListDivider.vue')['default']
     VListIndexBar: typeof import('./src/components/VListIndexBar.vue')['default']
     VListItem: typeof import('./src/components/VListItem.vue')['default']
     VLoading: typeof import('./src/components/VLoading.vue')['default']
-    VMain: typeof import('./src/components/VMain.vue')['default']
-    VRouterView: typeof import('./src/components/VRouterView.vue')['default']
-    VSpacer: typeof import('./src/components/VSpacer.vue')['default']
   }
 }
