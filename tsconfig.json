@@ -1,37 +1,41 @@
 {
+  "extends": "@vue/tsconfig/tsconfig.web.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "lib": ["DOM", "ESNext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
-    "types": ["vite/client", "vite-plugin-pages/client-react"],
-    "newLine": "lf",
-    "noUnusedLocals": true,
     "baseUrl": ".",
-    "sourceMap": false,
+    "outDir": "dist",
+    "allowJs": true,
+    "jsx": "preserve",
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": [
+      "element-plus/global",
+      "jsdom",
+      "node",
+      "type-fest",
+      "unplugin-icons/types/vue",
+      "unplugin-vue-macros/macros-global",
+      "vite/client",
+      "vite-plugin-pages/client",
+      "vue/macros-global"
+    ]
   },
   "include": [
-    "./**/.*.js",
-    "./**/*.js",
-    "./**/*.jsx",
-    "./**/.*.ts",
-    "./**/*.ts",
-    "./**/*.tsx",
-    "./**/*.vue"
+    "**/.*.js",
+    "**/.*.cjs",
+    "**/.*.mjs",
+    "**/.*.ts",
+    "**/.*.cts",
+    "**/.*.mts",
+    "**/*.js",
+    "**/*.cjs",
+    "**/*.mjs",
+    "**/*.jsx",
+    "**/*.ts",
+    "**/*.cts",
+    "**/*.mts",
+    "**/*.tsx",
+    "**/*.vue"
   ],
-  "exclude": ["node_modules", "dist", "dist-ssr", "dist_electron", "out", "unpackage"]
+  "exclude": [".cache", ".temp", ".tmp", "cache", "temp", "tmp", "dist*", "node_modules"]
 }

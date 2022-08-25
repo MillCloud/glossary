@@ -1,32 +1,98 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import tsconfigPaths from 'vite-tsconfig-paths';
+import { fileURLToPath } from 'node:url';
+import { defineConfig } from 'vitest/config';
+import vueMarcos from 'unplugin-vue-macros/vite';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import pages from 'vite-plugin-pages';
-import env from 'vite-plugin-env-compatible';
-import compression from 'vite-plugin-compression';
-import eslint from 'vite-plugin-eslint';
+import autoImport from 'unplugin-auto-import/vite';
+import vueComponents from 'unplugin-vue-components/vite';
+import iconsResolver from 'unplugin-icons/resolver';
+import icons from 'unplugin-icons/vite';
+import eslint from '@modyqyw/vite-plugin-eslint';
 import stylelint from 'vite-plugin-stylelint';
+import compression from 'vite-plugin-compression';
+// import mkcert from 'vite-plugin-mkcert';
+import inspect from 'vite-plugin-inspect';
+import { dependencies } from './package.json';
 
 export default defineConfig({
+  build: {
+    commonjsOptions: {
+      include: [],
+    },
+    target: 'es6',
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        charset: false,
+        additionalData: `@use "@/styles/variables.scss" as *;`,
+      },
+    },
+  },
+  optimizeDeps: {
+    disabled: false,
+    include: Object.keys(dependencies),
+    exclude: ['vue-demi'],
+  },
   plugins: [
-    react(),
-    tsconfigPaths(),
-    pages(),
-    compression(),
-    env({
-      prefix: 'VITE',
+    vueMarcos(),
+    vue({
+      reactivityTransform: true,
+    }),
+    vueJsx(),
+    pages({
+      exclude: [
+        '**/components/*.js',
+        '**/components/*.jsx',
+        '**/components/*.ts',
+        '**/components/*.tsx',
+        '**/components/*.vue',
+      ],
+    }),
+    autoImport({
+      dirs: ['src/composables', 'src/composables/**', 'src/stores', 'src/stores/**'],
+      imports: ['vue', 'vue/macros', 'vue-router', '@vueuse/core'],
+    }),
+    vueComponents({
+      dirs: ['src/components'],
+      resolvers: [
+        {
+          type: 'component',
+          resolve: (componentName) => {
+            if (componentName === 'VIcon') {
+              return { name: 'Icon', from: '@iconify/vue' };
+            }
+          },
+        },
+        iconsResolver(),
+      ],
+    }),
+    icons({
+      compiler: 'vue3',
+      defaultClass: 'el-icon el-icon-',
     }),
     eslint({
       fix: true,
+      lintOnStart: true,
     }),
     stylelint({
       fix: true,
+      lintOnStart: true,
     }),
+    compression(),
+    // mkcert({
+    //   autoUpgrade: true,
+    //   source: 'coding',
+    // }),
+    inspect(),
   ],
-  server: {
-    fs: {
-      strict: true,
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('src', import.meta.url)),
     },
-    host: true,
+  },
+  test: {
+    environment: 'jsdom',
   },
 });
