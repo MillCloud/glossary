@@ -16,6 +16,7 @@ import inspect from 'vite-plugin-inspect';
 import { dependencies } from './package.json';
 
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/glossary/' : '/',
   build: {
     commonjsOptions: {
       include: [],
