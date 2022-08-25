@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <title>MillCloud 词汇表</title>
+    <style>
+      .loader {
+        font-size: 10px;
+        margin: 50px auto;
+        text-indent: -9999em;
+        width: 10em;
+        height: 10em;
+        border-radius: 50%;
+        background: #29d;
+        background: linear-gradient(to right, #29d 10%, rgba(34, 153, 221, 0) 42%);
+        position: relative;
+        -webkit-animation: load 1.4s infinite linear;
+        animation: load 1.4s infinite linear;
+        transform: translateZ(0);
+      }
+      .loader:before {
+        width: 50%;
+        height: 50%;
+        background: #29d;
+        border-radius: 100% 0 0 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+      }
+      .loader:after {
+        background: #fff;
+        width: 75%;
+        height: 75%;
+        border-radius: 50%;
+        content: '';
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+      @-webkit-keyframes load {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes load {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js"></script>
+    <script type="module" crossorigin src="/assets/index.15a6d987.js"></script>
+    <link rel="stylesheet" href="/assets/index.1187b339.css">
+  </head>
+  <body>
+    <noscript>
+      <strong>请允许 JavaScript 执行。</strong>
+    </noscript>
+    <div id="app" class="relative">
+      <div class="loader"></div>
+    </div>
+    
+  </body>
+</html>
