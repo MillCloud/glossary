@@ -107,7 +107,7 @@
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-inspect": "^0.6.0",
     "vite-plugin-mkcert": "^1.9.0",
-    "vite-plugin-pages": "^0.25.0",
+    "vite-plugin-pages": "^0.27.0",
     "vite-plugin-stylelint": "^3.0.7",
     "vitest": "^0.22.1",
     "vue-tsc": "^0.39.5"
