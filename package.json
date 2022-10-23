@@ -27,7 +27,7 @@
     "@iconify/vue": "^3.2.1",
     "@vueuse/core": "^9.1.0",
     "@vueuse/router": "^9.1.0",
-    "axios": "^0.27.2",
+    "axios": "^1.0.0",
     "browser-update": "^3.3.40",
     "change-case": "^4.1.2",
     "color": "^4.2.3",
