@@ -13,7 +13,6 @@ import stylelint from 'vite-plugin-stylelint';
 import compression from 'vite-plugin-compression';
 // import mkcert from 'vite-plugin-mkcert';
 import inspect from 'vite-plugin-inspect';
-import { dependencies } from './package.json';
 
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/glossary/' : '/',
@@ -22,6 +21,7 @@ export default defineConfig({
       include: [],
     },
     target: 'es6',
+    cssTarget: 'chrome61',
   },
   css: {
     preprocessorOptions: {
@@ -33,15 +33,17 @@ export default defineConfig({
   },
   optimizeDeps: {
     disabled: false,
-    include: Object.keys(dependencies),
     exclude: ['vue-demi'],
   },
   plugins: [
-    vueMarcos(),
-    vue({
-      reactivityTransform: true,
+    vueMarcos({
+      plugins: {
+        vue: vue({
+          reactivityTransform: true,
+        }),
+        vueJsx: vueJsx(),
+      },
     }),
-    vueJsx(),
     pages({
       exclude: [
         '**/components/*.js',
