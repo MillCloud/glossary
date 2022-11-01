@@ -9,15 +9,17 @@ const instance = axios.create({
   headers: {
     Accept: 'application/json',
   },
-  paramsSerializer: (params: any) =>
-    qs.stringify(
-      Object.fromEntries(
-        Object.entries(params).filter(
-          ([, v]) =>
-            !['', 'undefined', 'null', undefined, null].includes((v as any)?.toString() ?? v),
+  paramsSerializer: {
+    serialize: (params) =>
+      qs.stringify(
+        Object.fromEntries(
+          Object.entries(params).filter(
+            ([, v]) =>
+              !['', 'undefined', 'null', undefined, null].includes((v as any)?.toString() ?? v),
+          ),
         ),
       ),
-    ),
+  },
 });
 
 export { instance as axiosInstance };
