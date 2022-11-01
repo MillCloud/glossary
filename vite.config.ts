@@ -3,6 +3,7 @@ import { defineConfig } from 'vitest/config';
 import vueMarcos from 'unplugin-vue-macros/vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
+import legacy from '@vitejs/plugin-legacy';
 import pages from 'vite-plugin-pages';
 import autoImport from 'unplugin-auto-import/vite';
 import vueComponents from 'unplugin-vue-components/vite';
@@ -43,6 +44,9 @@ export default defineConfig({
         }),
         vueJsx: vueJsx(),
       },
+    }),
+    legacy({
+      targets: ['defaults', 'edge >= 79', 'firefox >= 67', 'safari >= 12', 'chrome >= 63'],
     }),
     pages({
       exclude: [
