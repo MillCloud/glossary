@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.2](https://github.com/MillCloud/glossary/compare/v1.0.1...v1.0.2) (2022-11-01)
+
+### Bug Fixes
+
+* fix axios config ([87f969a](https://github.com/MillCloud/glossary/commit/87f969a8f0501ce7f3387571d90662c13bd16ac0))
+
 ## [1.0.1](https://github.com/MillCloud/glossary/compare/v1.0.0...v1.0.1) (2022-08-25)
 
 ### Bug Fixes
