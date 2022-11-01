@@ -48,7 +48,7 @@
     "@commitlint/prompt": "^17.2.0",
     "@iconify/json": "^2.1.131",
     "@modyqyw/fabric": "^5.11.0",
-    "@modyqyw/tailwind-presets": "^0.15.1",
+    "@modyqyw/tailwind-presets": "^0.17.0",
     "@modyqyw/vite-plugin-eslint": "^2.0.10",
     "@release-it/conventional-changelog": "^5.1.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
