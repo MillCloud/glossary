@@ -49,7 +49,7 @@
     "@iconify/json": "^2.1.131",
     "@modyqyw/fabric": "^5.11.0",
     "@modyqyw/tailwind-presets": "^0.15.1",
-    "@modyqyw/vite-plugin-eslint": "^2.0.10",
+    "@modyqyw/vite-plugin-eslint": "^3.0.0",
     "@release-it/conventional-changelog": "^5.1.1",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/line-clamp": "^0.4.2",
