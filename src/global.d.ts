@@ -31,10 +31,10 @@ declare global {
 
   interface Form {
     search: string;
-    endpoint: typeof Endpoints[number];
+    endpoint: (typeof Endpoints)[number];
   }
 
-  type Char = typeof Alphabet[number];
+  type Char = (typeof Alphabet)[number];
 }
 
 export {};

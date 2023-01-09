@@ -3,7 +3,7 @@ import { Search } from '@element-plus/icons-vue';
 import { Endpoints } from '@/constants';
 
 const form = reactive<Form>({
-  endpoint: Endpoints[0] as typeof Endpoints[number],
+  endpoint: Endpoints[0] as (typeof Endpoints)[number],
   search: '',
 });
 
